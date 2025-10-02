@@ -40,6 +40,9 @@ npm install
 npm run dev
 
 
+For production, I would deploy backend on a service like Render with MongoDB Atlas and serve frontend via Vercel, using environment variables for API base URL
+
+
 
 ## API Endpoints
 
