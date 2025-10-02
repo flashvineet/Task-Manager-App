@@ -1,0 +1,98 @@
+{
+  "info": {
+    "name": "Task Manager API",
+    "_postman_id": "12345678-abcd-efgh-ijkl-1234567890ab",
+    "description": "Postman collection for Task Manager backend APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "http://localhost:5000/api/auth/register", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "register"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "http://localhost:5000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "login"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Tasks - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "http://localhost:5000/api/tasks", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "tasks"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"First Task\",\n  \"description\": \"This is a test task\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Tasks - List",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": { "raw": "http://localhost:5000/api/tasks", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "tasks"] }
+      }
+    },
+    {
+      "name": "Tasks - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "http://localhost:5000/api/tasks/{{taskId}}", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "tasks", "{{taskId}}"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated Task\",\n  \"description\": \"Updated description\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Tasks - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": { "raw": "http://localhost:5000/api/tasks/{{taskId}}", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "tasks", "{{taskId}}"] }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "taskId",
+      "value": ""
+    }
+  ]
+}
